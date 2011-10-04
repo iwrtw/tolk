@@ -17,7 +17,7 @@ module Tolk
       end
     end
 
-    default_scope where(Tolk::Locale.special_prefixes.map { |prefix| "tolk_phrases.key NOT LIKE '#{prefix}'" }.join(' AND '))
+    default_scope where(Tolk.configuration.excludes.map { |prefix| "tolk_phrases.key NOT LIKE '#{prefix}'" }.join(' AND '))
 
     attr_accessor :translation
   end
