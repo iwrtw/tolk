@@ -29,7 +29,7 @@ class TranslationProcessTest < ActionController::IntegrationTest
     fill_in 'translations[][text]', :with => "Arrrr!"
     click_button 'Save changes'
 
-    assert_equal current_url, all_tolk_locale_url(locale)
+    assert_equal current_url, tolk_locale_all_url(locale)
     assert_equal 1, locale.translations.count
     assert_equal 'Arrrr!', locale.translations(true).first.text
   end
