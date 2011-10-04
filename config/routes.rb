@@ -1,7 +1,11 @@
-Rails.application.routes.draw do |map|
-  map.namespace('tolk') do |tolk|
-    tolk.root :controller => 'locales'
-    tolk.resources :locales, :member => {:all => :get, :updated => :get}
-    tolk.resource :search
+Rails.application.routes.draw do
+  namespace :tolk do
+    resources :locales do
+      get  :all
+      post :updated
+    end
+    resource :search
+
+    root :to => 'locales#index'
   end
 end
